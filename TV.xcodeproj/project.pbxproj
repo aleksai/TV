@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		571846662699F0D100115E92 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571846652699F0D100115E92 /* NavigationLazyView.swift */; };
+		571846682699F0F100115E92 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571846672699F0F100115E92 /* VisualEffectView.swift */; };
 		572C5E04268F924A00565D02 /* TVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C5E03268F924A00565D02 /* TVApp.swift */; };
 		572C5E06268F924A00565D02 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C5E05268F924A00565D02 /* DevicesView.swift */; };
 		572C5E08268F924E00565D02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 572C5E07268F924E00565D02 /* Assets.xcassets */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		0A48CC53E71E4F78E4EBA707 /* Pods-TV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV.release.xcconfig"; path = "Target Support Files/Pods-TV/Pods-TV.release.xcconfig"; sourceTree = "<group>"; };
+		571846652699F0D100115E92 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
+		571846672699F0F100115E92 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		572C5E00268F924A00565D02 /* TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		572C5E03268F924A00565D02 /* TVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVApp.swift; sourceTree = "<group>"; };
 		572C5E05268F924A00565D02 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
@@ -59,6 +63,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		571846642699F0BC00115E92 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				571846652699F0D100115E92 /* NavigationLazyView.swift */,
+				571846672699F0F100115E92 /* VisualEffectView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		572C5DF7268F924900565D02 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +95,7 @@
 			children = (
 				572C5E03268F924A00565D02 /* TVApp.swift */,
 				572C5E13268F9B8A00565D02 /* Scenes */,
+				571846642699F0BC00115E92 /* Extensions */,
 				572C5E12268F9B7E00565D02 /* Resources */,
 			);
 			path = TV;
@@ -269,6 +283,8 @@
 				572C5E20268FB59800565D02 /* PlayerView.swift in Sources */,
 				572C5E16268F9BE000565D02 /* DevicesViewModel.swift in Sources */,
 				572C5E06268F924A00565D02 /* DevicesView.swift in Sources */,
+				571846682699F0F100115E92 /* VisualEffectView.swift in Sources */,
+				571846662699F0D100115E92 /* NavigationLazyView.swift in Sources */,
 				572C5E19268FAFA500565D02 /* FoldersView.swift in Sources */,
 				572C5E04268F924A00565D02 /* TVApp.swift in Sources */,
 				572C5E1B268FAFBC00565D02 /* RootView.swift in Sources */,

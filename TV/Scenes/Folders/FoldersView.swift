@@ -12,6 +12,7 @@ struct FoldersView: View {
     @ObservedObject public var viewModel: FoldersViewModel
     
     @State var playing = false
+    @State var playingItem: FoldersViewModel.FolderItem?
     
     var columns: [GridItem] = Array(repeating: .init(.adaptive(minimum: 330, maximum: 330)), count: 4)
     
@@ -23,6 +24,11 @@ struct FoldersView: View {
                 
                 Spacer()
             }
+            
+            NavigationLink(destination: PlayerView(item: playingItem, playing: $playing), isActive: $playing) {
+                EmptyView()
+            }
+            .hidden()
             
             HStack(spacing: 20) {
                 if viewModel.items.isEmpty {
@@ -36,7 +42,7 @@ struct FoldersView: View {
                         LazyVGrid(columns: columns, alignment: .leading) {
                             ForEach(viewModel.items, id: \.id) { item in
                                 if item.type == "folder" {
-                                    NavigationLink(destination: FoldersView(viewModel: FoldersViewModelImpl(device: viewModel.device, objectID: item.id, name: item.name))) {
+                                    NavigationLink(destination: NavigationLazyView(FoldersView(viewModel: FoldersViewModelImpl(device: viewModel.device, objectID: item.id, name: item.name)))) {
                                         VStack(spacing: 10) {
                                             Text(item.name)
                                                 .font(.title3)
@@ -46,10 +52,14 @@ struct FoldersView: View {
                                     }
                                     .buttonStyle(CardButtonStyle())
                                 } else {
-                                    NavigationLink(destination: PlayerView(viewModel: PlayerViewModelImpl(device: viewModel.device, resources: item.resources, metadata: item.metadata), playing: $playing), isActive: $playing) {
+                                    Button(action: {
+                                        playingItem = item
+                                        
+                                        playing = true
+                                    }) {
                                         VStack(spacing: 10) {
                                             Text(item.name)
-                                                .font(.title3)
+                                                .font(.body)
                                         }
                                         .frame(width: 300, height: 130)
                                         .padding()

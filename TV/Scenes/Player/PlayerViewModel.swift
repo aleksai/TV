@@ -11,6 +11,7 @@ import CocoaUPnP
 public class PlayerViewModel: NSObject, ObservableObject {
     
     @Published var url: URL?
+    @Published var name: String?
     
     @Published var pause = false
     
@@ -18,12 +19,13 @@ public class PlayerViewModel: NSObject, ObservableObject {
 
 final class PlayerViewModelImpl: PlayerViewModel {
     
-    init(device: UPPBasicDevice?, resources: [UPPMediaItemResource], metadata: String?) {
+    init(item: FoldersViewModel.FolderItem?) {
         super.init()
         
-        url = URL(string: resources.first?.resourceURLString ?? "")
+        url = URL(string: item?.resources.first?.resourceURLString ?? "")
+        name = item?.name
         
-        print(metadata)
+//        print(item?.metadata)
     }
     
 }

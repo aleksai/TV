@@ -75,18 +75,9 @@ struct Player: UIViewRepresentable {
 
 }
 
-struct VisualEffectView: UIViewRepresentable {
-    var effect: UIVisualEffect?
-    func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView { UIVisualEffectView() }
-    func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) { uiView.effect = effect }
-}
-
 struct PlayerView: View {
     
-    @ObservedObject public var viewModel: PlayerViewModel = PlayerViewModelImpl(device: nil, resources: [], metadata: nil)
-    
-    @Namespace var mainNamespace
-    @Environment(\.resetFocus) var resetFocus
+    @ObservedObject public var viewModel: PlayerViewModel
     
     @State var pause = false
     
@@ -102,11 +93,15 @@ struct PlayerView: View {
     
     @Binding var playing: Bool
     
+    init(item: FoldersViewModel.FolderItem?, playing: Binding<Bool>) {
+        viewModel = PlayerViewModelImpl(item: item)
+        
+        _playing = playing
+    }
+    
     private func playOrPause() {
         if PlayerDelegate.shared.mediaPlayer.isPlaying {
             PlayerDelegate.shared.mediaPlayer.pause()
-            
-            resetFocus(in: mainNamespace)
             
             withAnimation(.easeIn) {
                 pause = true
@@ -153,7 +148,7 @@ struct PlayerView: View {
                     .padding(.bottom, 30)
                     
                     if tab == 0 {
-                        Text(viewModel.url?.pathComponents.last ?? "hello.mkv")
+                        Text(viewModel.name ?? "")
                             .font(.headline)
                             .padding(.bottom, 20)
 
@@ -210,14 +205,14 @@ struct PlayerView: View {
 
 }
 
-struct FolderView_Preview: PreviewProvider {
+struct PlayerView_Preview: PreviewProvider {
     static var previews: some View {
-        PlayerView(viewModel: PlayerViewModel(), playing: Binding(get: { true }, set: { _ in }))
+        PlayerView(item: FoldersViewModel.FolderItem(id: "1", name: "Movie", type: "", duration: nil, resources: [], metadata: nil), playing: Binding(get: { true }, set: { _ in }))
     }
 }
 
-struct FolderView_Preview_Empty: PreviewProvider {
+struct PlayerView_Preview_Empty: PreviewProvider {
     static var previews: some View {
-        PlayerView(viewModel: PlayerViewModel(), playing: Binding(get: { true }, set: { _ in }))
+        PlayerView(item: FoldersViewModel.FolderItem(id: "1", name: "Movie", type: "", duration: nil, resources: [], metadata: nil), playing: Binding(get: { true }, set: { _ in }))
     }
 }
