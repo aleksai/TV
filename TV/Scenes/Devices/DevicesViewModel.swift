@@ -28,6 +28,8 @@ public class DevicesViewModel: NSObject, ObservableObject {
     
     @Published var searching = false
     
+    var savedDevice: ((UPPBasicDevice, String) -> ())?
+    
     func startDiscovery() {}
     
 }
@@ -48,7 +50,17 @@ final class DevicesViewModelImpl: DevicesViewModel {
     }
     
     override func startDiscovery() {
-        UPPDiscovery.sharedInstance().startBrowsing(forServices: "ssdp:all")
+        if let urn = UserDefaults.standard.string(forKey: "device-urn"),
+           let url = URL(string: UserDefaults.standard.string(forKey: "device-url") ?? ""),
+           let name = UserDefaults.standard.string(forKey: "device-name") {
+            let device = UPPBasicDevice(urn: urn, baseURL: url)
+            
+            print(device.urn)
+            
+            savedDevice?(device, name)
+        } else {
+            UPPDiscovery.sharedInstance().startBrowsing(forServices: "ssdp:all")
+        }
     }
     
 }

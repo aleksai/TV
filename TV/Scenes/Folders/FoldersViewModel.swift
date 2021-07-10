@@ -48,6 +48,10 @@ final class FoldersViewModelImpl: FoldersViewModel {
         
         self.device = device
         
+        UserDefaults.standard.setValue(device?.deviceType, forKey: "device-urn")
+        UserDefaults.standard.setValue(device?.baseURL.absoluteString, forKey: "device-url")
+        UserDefaults.standard.setValue(name, forKey: "device-name")
+        
         items = []
         title = name ?? ""
         

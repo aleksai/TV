@@ -6,15 +6,25 @@
 //
 
 import SwiftUI
+import CocoaUPnP
 
 struct DevicesView: View {
     
     @ObservedObject public var viewModel: DevicesViewModel = DevicesViewModelImpl()
     
+    @State var device: UPPBasicDevice!
+    @State var name: String!
+    @State var active = false
+    
     var body: some View {
         VStack {
             Text("Devices")
                 .font(.title)
+            
+            NavigationLink(destination: NavigationLazyView(FoldersView(viewModel: FoldersViewModelImpl(device: device, objectID: nil, name: name))), isActive: $active) {
+                EmptyView()
+            }
+            .hidden()
 
             HStack(spacing: 20) {
                 if viewModel.devices.isEmpty {
@@ -25,7 +35,7 @@ struct DevicesView: View {
                     .frame(height: 210)
                 } else {
                     ForEach(viewModel.devices, id: \.id) { device in
-                        NavigationLink(destination: FoldersView(viewModel: FoldersViewModelImpl(device: device.device, objectID: nil, name: device.name))) {
+                        NavigationLink(destination: NavigationLazyView(FoldersView(viewModel: FoldersViewModelImpl(device: device.device, objectID: nil, name: device.name)))) {
                             VStack(spacing: 10) {
                                 Text(device.name)
                                     .font(.title3)
@@ -41,6 +51,12 @@ struct DevicesView: View {
             }
         }
         .onAppear {
+            viewModel.savedDevice = { _device, _name in
+                device = _device
+                name = _name
+                active = true
+            }
+            
             viewModel.startDiscovery()
         }
     }
