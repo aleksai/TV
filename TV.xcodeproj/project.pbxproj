@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570BF14C269E3184000703B4 /* GeometryGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570BF14B269E3184000703B4 /* GeometryGetter.swift */; };
 		571846662699F0D100115E92 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571846652699F0D100115E92 /* NavigationLazyView.swift */; };
 		571846682699F0F100115E92 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571846672699F0F100115E92 /* VisualEffectView.swift */; };
 		572C5E04268F924A00565D02 /* TVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C5E03268F924A00565D02 /* TVApp.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		0A48CC53E71E4F78E4EBA707 /* Pods-TV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV.release.xcconfig"; path = "Target Support Files/Pods-TV/Pods-TV.release.xcconfig"; sourceTree = "<group>"; };
+		570BF14B269E3184000703B4 /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
 		571846652699F0D100115E92 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		571846672699F0F100115E92 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		572C5E00268F924A00565D02 /* TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TV.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +70,7 @@
 			children = (
 				571846652699F0D100115E92 /* NavigationLazyView.swift */,
 				571846672699F0F100115E92 /* VisualEffectView.swift */,
+				570BF14B269E3184000703B4 /* GeometryGetter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				572C5E06268F924A00565D02 /* DevicesView.swift in Sources */,
 				571846682699F0F100115E92 /* VisualEffectView.swift in Sources */,
 				571846662699F0D100115E92 /* NavigationLazyView.swift in Sources */,
+				570BF14C269E3184000703B4 /* GeometryGetter.swift in Sources */,
 				572C5E19268FAFA500565D02 /* FoldersView.swift in Sources */,
 				572C5E04268F924A00565D02 /* TVApp.swift in Sources */,
 				572C5E1B268FAFBC00565D02 /* RootView.swift in Sources */,
